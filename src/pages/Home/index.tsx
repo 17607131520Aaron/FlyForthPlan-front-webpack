@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const HomePage = (): React.JSX.Element => {
   return <div>HomePage</div>;

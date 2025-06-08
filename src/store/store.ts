@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 // import userReducer from './userReducer/reducer';
 
 const rootReducer = combineReducers({
-  userinfo: ()=>{
+  userinfo: () => {
     return {
       userinfo: {
         name: '张三',
