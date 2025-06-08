@@ -40,7 +40,7 @@ compiler.run((err, stats) => {
 
   if (stats.hasErrors()) {
     console.error(chalk.red('Compile failed.\n'));
-    info.errors.forEach(error => {
+    info.errors.forEach((error) => {
       console.error(error);
     });
     process.exit(1);
@@ -49,29 +49,27 @@ compiler.run((err, stats) => {
 
   if (stats.hasWarnings()) {
     console.warn(chalk.yellow('Compiled with warnings.\n'));
-    info.warnings.forEach(warning => {
+    info.warnings.forEach((warning) => {
       console.warn(warning);
     });
   }
 
   console.log(chalk.green('Compiled successfully.\n'));
   console.log(chalk.bold('File sizes after gzip:\n'));
-  
+
   // 输出文件大小信息
   const assets = info.assets
-    .filter(asset => /\.(js|css)$/.test(asset.name))
+    .filter((asset) => /\.(js|css)$/.test(asset.name))
     .sort((a, b) => b.size - a.size);
-  
-  assets.forEach(asset => {
+
+  assets.forEach((asset) => {
     const sizeInKB = (asset.size / 1024).toFixed(2);
-    console.log(
-      `  ${chalk.cyan(asset.name.padEnd(30))} ${chalk.bold(sizeInKB + ' KB')}`
-    );
+    console.log(`  ${chalk.cyan(asset.name.padEnd(30))} ${chalk.bold(sizeInKB + ' KB')}`);
   });
-  
+
   console.log('\n');
   console.log(chalk.green('Build completed successfully!'));
-  
+
   // 关闭编译器
   compiler.close((closeErr) => {
     if (closeErr) {

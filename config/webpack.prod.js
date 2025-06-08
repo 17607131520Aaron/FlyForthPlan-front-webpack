@@ -15,7 +15,7 @@ const webpackConfig = merge(createCommonConfig(), {
     filename: 'js/[name].[contenthash:8].js',
     chunkFilename: 'js/[name].[contenthash:8].chunk.js',
   },
-  // 阿里规范：生产环境不生成source map或使用hidden-source-map
+  //生产环境不生成source map或使用hidden-source-map
   devtool: 'hidden-source-map',
   module: {
     rules: [
@@ -33,7 +33,7 @@ const webpackConfig = merge(createCommonConfig(), {
       },
     ],
   },
-  // 阿里规范：配置插件
+  // 配置插件
   plugins: [
     // HTML模板额外配置
     {
@@ -69,7 +69,7 @@ const webpackConfig = merge(createCommonConfig(), {
     // 打包分析
     ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
   ],
-  // 阿里规范：优化配置
+  // 优化配置
   optimization: {
     minimize: true,
     minimizer: [
@@ -132,7 +132,7 @@ const webpackConfig = merge(createCommonConfig(), {
       name: (entrypoint) => `runtime-${entrypoint.name}`,
     },
   },
-  // 阿里规范：性能提示
+  //性能提示
   performance: {
     hints: 'warning',
     maxEntrypointSize: 512000, // 入口起点的最大体积
@@ -140,4 +140,4 @@ const webpackConfig = merge(createCommonConfig(), {
   },
 });
 
-module.exports = webpackConfig; 
+module.exports = webpackConfig;

@@ -15,7 +15,7 @@ const webpackConfig = merge(createCommonConfig(), {
   output: {
     filename: '[name].js',
   },
-  // 阿里规范：开发环境推荐使用 eval-source-map 提高构建速度和调试体验
+  // 开发环境推荐使用 eval-source-map 提高构建速度和调试体验
   devtool: 'eval-source-map',
   module: {
     rules: [
@@ -44,7 +44,6 @@ const webpackConfig = merge(createCommonConfig(), {
       },
     ],
   },
-  // 阿里规范：配置开发服务器
   devServer: {
     host: HOST,
     port: PORT,
@@ -59,17 +58,16 @@ const webpackConfig = merge(createCommonConfig(), {
       },
       progress: true,
     },
-    // 阿里规范：配置代理，解决跨域问题
+    // 配置代理，解决跨域问题
     proxy: [
       {
         context: ['/api'],
         target: process.env.API_URL || 'http://localhost:8080',
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
-      }
+      },
     ],
   },
-  // 阿里规范：配置插件
   plugins: [
     // 热更新插件
     new ReactRefreshWebpackPlugin(),
@@ -84,7 +82,7 @@ const webpackConfig = merge(createCommonConfig(), {
       },
     }),
   ],
-  // 阿里规范：性能提示
+  //性能提示
   performance: {
     hints: false,
   },

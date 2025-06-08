@@ -116,7 +116,7 @@ const createCommonConfig = () => ({
       contextRegExp: /moment$/,
     }),
   ],
-  // 阿里规范：优化配置
+  // 优化配置
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
@@ -138,14 +138,14 @@ const createCommonConfig = () => ({
       },
     },
   },
-  // 阿里规范：统计信息配置
+  // 统计信息配置
   stats: {
     modules: false,
     children: false,
     chunks: false,
     chunkModules: false,
   },
-  // 阿里规范：缓存配置
+  //缓存配置
   cache: {
     type: 'filesystem',
     buildDependencies: {
@@ -154,4 +154,4 @@ const createCommonConfig = () => ({
   },
 });
 
-module.exports = createCommonConfig; 
+module.exports = createCommonConfig;
