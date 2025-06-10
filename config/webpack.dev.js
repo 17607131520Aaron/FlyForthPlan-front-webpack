@@ -1,10 +1,9 @@
-const path = require('path');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const ip = require('ip');
-const chalk = require('chalk');
-const { merge } = require('webpack-merge');
-const createCommonConfig = require('./webpack.common');
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+import ip from 'ip';
+import chalk from 'chalk';
+import { merge } from 'webpack-merge';
+import createCommonConfig from './webpack.common.js';
 
 // 开发服务器配置
 const PORT = process.env.PORT || 3000;
@@ -26,7 +25,8 @@ const webpackConfig = merge(createCommonConfig(), {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            plugins: [require.resolve('react-refresh/babel')],
+            // 在 Webpack 配置中，某些路径解析仍需使用 require.resolve
+            plugins: ['react-refresh/babel'],
           },
         },
       },
@@ -88,4 +88,4 @@ const webpackConfig = merge(createCommonConfig(), {
   },
 });
 
-module.exports = webpackConfig;
+export default webpackConfig;

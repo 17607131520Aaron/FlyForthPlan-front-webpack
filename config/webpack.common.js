@@ -1,10 +1,15 @@
-const path = require('path');
-const dotenv = require('dotenv');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const chalk = require('chalk');
+import dotenv from 'dotenv';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
+import chalk from 'chalk';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// 在 ESM 中获取 __dirname 和 __filename 的等价物
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // 根据当前环境加载对应的环境变量文件
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -154,4 +159,4 @@ const createCommonConfig = () => ({
   },
 });
 
-module.exports = createCommonConfig;
+export default createCommonConfig;

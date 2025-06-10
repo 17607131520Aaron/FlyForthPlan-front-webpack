@@ -1,8 +1,9 @@
-const webpack = require('webpack');
-const chalk = require('chalk');
-const path = require('path');
-const dotenv = require('dotenv');
-const fs = require('fs');
+import webpack from 'webpack';
+import chalk from 'chalk';
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import webpackConfig from '../config/webpack.prod.js';
 
 // 设置环境变量
 process.env.NODE_ENV = 'production';
@@ -14,9 +15,6 @@ if (fs.existsSync(envPath)) {
 } else {
   dotenv.config();
 }
-
-// 加载生产环境配置
-const webpackConfig = require('../config/webpack.prod.js');
 
 // 创建编译器
 const compiler = webpack(webpackConfig);
@@ -64,7 +62,7 @@ compiler.run((err, stats) => {
 
   assets.forEach((asset) => {
     const sizeInKB = (asset.size / 1024).toFixed(2);
-    console.log(`  ${chalk.cyan(asset.name.padEnd(30))} ${chalk.bold(sizeInKB + ' KB')}`);
+    console.log(`  ${chalk.cyan(asset.name.padEnd(30))} ${chalk.bold(`${sizeInKB} KB`)}`);
   });
 
   console.log('\n');

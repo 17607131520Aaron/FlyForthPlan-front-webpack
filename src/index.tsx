@@ -7,7 +7,7 @@ import { ConfigProvider } from 'antd';
 import ZhCN from 'antd/locale/zh_CN';
 import { store, persist } from './store';
 import routers from './router';
-// import './index.less';
+import './index.less';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);

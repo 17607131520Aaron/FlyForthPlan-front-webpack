@@ -1,10 +1,9 @@
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { merge } = require('webpack-merge');
-const createCommonConfig = require('./webpack.common');
+import TerserPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { merge } from 'webpack-merge';
+import createCommonConfig from './webpack.common.js';
 
 // 是否开启分析
 const isAnalyze = process.env.ANALYZE === 'true';
@@ -140,4 +139,4 @@ const webpackConfig = merge(createCommonConfig(), {
   },
 });
 
-module.exports = webpackConfig;
+export default webpackConfig;
