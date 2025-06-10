@@ -10,7 +10,7 @@ const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const isUserAuthenticated = () => {
   const user = getCookie('user');
   if (!user) {
-    return redirect('/login');
+    return redirect('/');
   }
   return null;
 };
